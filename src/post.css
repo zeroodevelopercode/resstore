@@ -1,0 +1,302 @@
+.sub { padding: 0 16px 14px; color: var(--muted); font-size: 14px; }
+
+/* Pilih jenis postingan */
+.pick-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 8px 16px 20px; }
+.pick-card {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 10px;
+  min-height: 176px; padding: 20px 16px; text-align: left; font: inherit; color: var(--text);
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); cursor: pointer;
+  transition: border-color 0.25s var(--ease), background 0.25s var(--ease);
+}
+.pick-card:hover { border-color: var(--accent); background: var(--surface-2); }
+.pick-card:active { opacity: 0.85; }
+.pick-card .ico {
+  width: 44px; height: 44px; display: grid; place-items: center; margin-bottom: 6px;
+  border: 1px solid var(--accent); border-radius: var(--radius); color: var(--accent);
+}
+.pick-card h3 { font-size: 18px; font-weight: 500; }
+.pick-card p { font-size: 13px; color: var(--muted); }
+
+/* Konfirmasi */
+.thumb-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; padding: 0 16px; }
+.thumb { position: relative; aspect-ratio: 1 / 1; background: var(--surface); overflow: hidden; }
+.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.idx {
+  position: absolute; left: 4px; top: 4px; min-width: 18px; height: 18px; padding: 0 4px;
+  background: var(--bg); color: var(--accent); border-radius: var(--radius);
+  font-size: 11px; font-weight: 700; line-height: 18px; text-align: center;
+}
+.rm {
+  position: absolute; right: 4px; top: 4px; width: 22px; height: 22px;
+  background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
+  color: var(--text); font: inherit; font-size: 15px; line-height: 1; cursor: pointer;
+}
+.row-actions { padding: 12px 16px 0; }
+.vid-preview { width: 100%; max-height: 60dvh; background: #000; display: block; }
+.confirm {
+  margin: 20px 16px; padding: 18px; background: var(--surface);
+  border: 1px solid var(--line); border-left: 2px solid var(--accent); border-radius: var(--radius);
+}
+.confirm h3 { font-size: 17px; font-weight: 500; margin-bottom: 4px; }
+.confirm p { font-size: 14px; color: var(--muted); margin-bottom: 16px; }
+.confirm-actions { display: flex; gap: 10px; }
+.confirm-actions .btn { flex: 1; padding: 12px; }
+
+/* Detail postingan */
+.compose-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 20px 16px 8px; }
+.compose-top h1 { font-size: 20px; font-weight: 500; }
+.strip { display: flex; gap: 8px; overflow-x: auto; padding: 8px 16px 14px; scrollbar-width: none; }
+.strip::-webkit-scrollbar { display: none; }
+.mini {
+  position: relative; flex: none; width: 68px; height: 92px; overflow: hidden;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+}
+.mini img, .mini video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.compose-form { display: flex; flex-direction: column; gap: 16px; padding: 8px 16px 24px; }
+.opt-group { display: flex; flex-direction: column; }
+.opt {
+  display: flex; align-items: center; gap: 12px; width: 100%; padding: 14px; text-align: left;
+  font: inherit; color: var(--text); background: var(--surface);
+  border: 1px solid var(--line); border-radius: var(--radius); cursor: pointer;
+  transition: border-color 0.25s var(--ease);
+}
+.opt:hover:not(:disabled) { border-color: var(--accent); }
+.opt:disabled { opacity: 0.5; cursor: default; }
+.opt svg { color: var(--accent); flex: none; }
+.opt-t { flex: 1; font-size: 15px; }
+.opt-v { max-width: 45%; font-size: 13px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.opt-body { padding: 12px; background: var(--surface-2); border: 1px solid var(--line); border-top: 0; }
+
+.boost {
+  display: flex; align-items: center; gap: 14px; padding: 14px; background: var(--surface);
+  border: 1px solid var(--line); border-radius: var(--radius); transition: border-color 0.25s var(--ease);
+}
+.boost.on { border-color: var(--accent); }
+.boost > div { flex: 1; }
+.boost h3 { font-size: 15px; font-weight: 500; color: var(--accent); }
+.boost p { font-size: 13px; color: var(--muted); }
+.switch {
+  position: relative; flex: none; width: 46px; height: 26px; cursor: pointer;
+  background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
+  transition: border-color 0.25s var(--ease);
+}
+.switch span {
+  position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; background: var(--muted);
+  transition: transform 0.25s var(--ease), background 0.25s var(--ease);
+}
+.switch[aria-checked="true"] { border-color: var(--accent); }
+.switch[aria-checked="true"] span { transform: translateX(20px); background: var(--accent); }
+.compose-actions { display: flex; gap: 10px; }
+.compose-actions .btn { padding: 13px; }
+.compose-actions .btn:last-child { flex: 1; }
+.up-status { font-size: 13px; color: var(--accent); }
+
+/* Slide foto di feed */
+.post-media { position: relative; }
+.carousel {
+  display: flex; width: 100%; height: 100%; overflow-x: auto;
+  scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain;
+}
+.carousel::-webkit-scrollbar { display: none; }
+.carousel img { flex: none; width: 100%; height: 100%; object-fit: cover; scroll-snap-align: center; }
+.count-pill {
+  position: absolute; top: 10px; right: 10px; padding: 2px 8px; font-size: 12px;
+  background: var(--bg); border-radius: var(--radius);
+}
+.dots { position: absolute; left: 0; right: 0; bottom: 10px; display: flex; justify-content: center; gap: 4px; }
+.dots span { width: 5px; height: 5px; background: var(--muted); opacity: 0.6; }
+.dots span.on { background: var(--accent); opacity: 1; }
+.tag { color: var(--accent); }
+.music-chip { display: flex; align-items: center; gap: 8px; margin: 8px 0 0; font-size: 13px; color: var(--muted); }
+.music-chip svg { color: var(--accent); flex: none; }
+.music-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.post-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 13px; color: var(--accent); }
+.post-link:hover { text-decoration: underline; }
+
+/* Lembar musik dan pratinjau */
+.sheet-note { font-size: 13px; color: var(--muted); }
+.song-list { list-style: none; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg); }
+.song { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-top: 1px solid var(--line); }
+.song:first-child { border-top: 0; }
+.song .info { flex: 1; min-width: 0; }
+.song b { display: block; font-size: 14px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.song small { font-size: 12px; color: var(--muted); }
+.prev-wrap { margin: 0 -20px; }
+.prev-wrap .post { border-bottom: 0; }
+
+/* ========== Warna tambahan ========== */
+:root { --green: #6fb585; --pink: #e46fa0; }
+
+/* ========== Layar penuh (konfirmasi dan detail) ========== */
+.fs {
+  position: fixed; inset: 0; z-index: 60; display: flex; flex-direction: column;
+  background: var(--bg); padding-top: var(--safe-t); animation: pudar 0.3s var(--ease);
+}
+.fs-top {
+  flex: none; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+  padding: 14px 16px; border-bottom: 1px solid var(--line);
+}
+.fs-top h1 { font-size: 17px; font-weight: 500; text-align: center; }
+.fs-top .link-btn { justify-self: start; }
+.fs-count { justify-self: end; font-size: 13px; color: var(--muted); }
+.fs-stage { flex: 1; min-height: 0; display: grid; place-items: center; overflow: hidden; background: #000; }
+.fs-stage img, .fs-stage video { max-width: 100%; max-height: 100%; object-fit: contain; }
+.fs-scroll { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+.fs-bottom {
+  flex: none; padding: 12px 0 calc(12px + var(--safe-b));
+  background: var(--bg); border-top: 1px solid var(--line);
+}
+.fs-bottom .confirm { margin: 12px 16px 0; }
+.fs-bottom .strip { padding: 0 16px 4px; }
+.fs-bottom .row-actions { padding: 0 16px; }
+.fs-notice { margin: 0 16px 10px; font-size: 13px; color: var(--muted); }
+.fs-msg { padding: 0 16px 8px; }
+.fs-actions { padding: 0 16px; }
+.mini.on { border-color: var(--accent); }
+.mini-img { position: absolute; inset: 0; padding: 0; border: 0; background: none; cursor: pointer; }
+.mini-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mini.add {
+  display: grid; place-items: center; font: inherit; font-size: 12px; color: var(--accent);
+  background: none; border: 1px dashed var(--accent); cursor: pointer;
+}
+
+/* ========== Media di feed ========== */
+.post .post-media {
+  position: relative; display: block; width: 100%; overflow: hidden; background: #000;
+}
+.post .post-media.empty { display: grid; place-items: center; background: var(--surface); }
+.post .carousel { position: absolute; inset: 0; width: 100%; height: 100%; }
+.post .carousel img {
+  flex: none; width: 100%; height: 100%; object-fit: contain; background: #000;
+  scroll-snap-align: center; scroll-snap-stop: always; -webkit-user-drag: none;
+}
+.post .post-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #000; }
+.vwrap { position: absolute; inset: 0; cursor: pointer; }
+.state-icon { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; opacity: 0.85; pointer-events: none; }
+.seek-hint {
+  position: absolute; top: 50%; transform: translateY(-50%); padding: 6px 12px; pointer-events: none;
+  background: rgba(16, 20, 24, 0.82); color: #fff; font-size: 13px; border-radius: var(--radius);
+  animation: hint 0.8s var(--ease) forwards;
+}
+.seek-hint.left { left: 10%; }
+.seek-hint.right { right: 10%; }
+.burst {
+  position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none;
+  color: var(--pink); animation: burst 0.85s var(--ease) forwards;
+}
+.sound-btn {
+  position: absolute; right: 10px; bottom: 10px; width: 34px; height: 34px; display: grid; place-items: center;
+  background: rgba(16, 20, 24, 0.7); color: #fff; border: 0; border-radius: var(--radius); cursor: pointer;
+}
+.count-pill, .dots { pointer-events: none; }
+@keyframes hint { 0% { opacity: 0; } 15% { opacity: 1; } 80% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes burst {
+  0% { opacity: 0; transform: scale(0.4); }
+  25% { opacity: 1; transform: scale(1.15); }
+  70% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.2); }
+}
+
+/* Suka */
+.post-actions { display: flex; align-items: center; padding: 10px 16px 0; }
+.like {
+  display: inline-flex; align-items: center; gap: 8px; padding: 4px 0; background: none; border: 0;
+  color: var(--text); font: inherit; font-size: 14px; cursor: pointer; transition: color 0.2s var(--ease);
+}
+.like.on { color: var(--pink); }
+.like.on svg { animation: pop 0.35s var(--ease); }
+@keyframes pop { 0% { transform: scale(0.7); } 60% { transform: scale(1.25); } 100% { transform: scale(1); } }
+.post .post-body { padding-top: 6px; }
+
+/* Cincin cerita (garis hijau tipis) */
+.avatar-btn { display: block; padding: 0; background: none; border: 0; cursor: pointer; }
+.avatar.story { border-color: var(--green); box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px var(--green); }
+.post-head { padding-left: 18px; }
+
+/* ========== Cerita ========== */
+.stories {
+  display: flex; gap: 14px; overflow-x: auto; padding: 16px 18px 14px;
+  border-bottom: 1px solid var(--line); scrollbar-width: none;
+}
+.stories::-webkit-scrollbar { display: none; }
+.story-item { position: relative; flex: none; width: 64px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.story-av { padding: 0; background: none; border: 0; cursor: pointer; }
+.avatar.lg { width: 56px; height: 56px; font-size: 20px; }
+.story-item > span {
+  display: inline-flex; align-items: center; max-width: 64px; font-size: 11px; color: var(--muted);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.story-plus {
+  position: absolute; top: 36px; right: 2px; width: 20px; height: 20px; display: grid; place-items: center;
+  background: var(--accent); color: var(--bg); border: 2px solid var(--bg); border-radius: var(--radius);
+  font: inherit; font-size: 14px; font-weight: 700; line-height: 1; cursor: pointer;
+}
+.sub.top { padding-top: 12px; }
+.story-preview { background: #000; border-radius: var(--radius); overflow: hidden; display: grid; place-items: center; max-height: 50dvh; }
+.story-preview img, .story-preview video { max-width: 100%; max-height: 50dvh; object-fit: contain; }
+.sheet-actions { display: flex; gap: 10px; }
+.sheet-actions .btn { flex: 1; padding: 13px; }
+
+.story-view { position: fixed; inset: 0; z-index: 120; display: flex; flex-direction: column; background: #000; color: #fff; animation: pudar 0.25s var(--ease); }
+.story-bars { display: flex; gap: 4px; padding: calc(10px + var(--safe-t)) 12px 8px; }
+.story-bars span { flex: 1; height: 2px; background: rgba(255, 255, 255, 0.25); overflow: hidden; }
+.story-bars i { display: block; width: 0; height: 100%; background: #fff; }
+.story-bars .done i { width: 100%; }
+.story-bars .now.photo i { animation: isi 5s linear forwards; }
+@keyframes isi { from { width: 0; } to { width: 100%; } }
+.story-head { display: flex; align-items: center; gap: 10px; padding: 4px 12px 10px; font-size: 14px; }
+.story-head small { color: rgba(255, 255, 255, 0.6); }
+.story-head .grow { flex: 1; }
+.story-head .link-btn { color: #fff; }
+.story-head b { display: inline-flex; align-items: center; font-weight: 500; }
+.story-stage { flex: 1; min-height: 0; display: grid; place-items: center; padding-bottom: var(--safe-b); }
+.story-stage img, .story-stage video { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+/* ========== Hasil potong video ========== */
+.crop-box { position: relative; overflow: hidden; aspect-ratio: var(--ar, 1); background: #000; width: min(100cqw, calc(100cqh * var(--ar, 1))); }
+.crop-box.sm { width: min(100%, calc(50dvh * var(--ar, 1))); }
+.crop-box video { max-width: none; max-height: none; }
+.fs-stage, .story-stage { container-type: size; }
+.row-actions.two { display: flex; gap: 8px; padding: 12px 16px 0; }
+.fs-bottom .row-actions.two { padding: 0 16px; }
+
+/* ========== Foto profil dan latar ========== */
+.cover-media { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+.cover-edit {
+  position: absolute; right: 10px; bottom: 10px; padding: 5px 10px; font: inherit; font-size: 12px;
+  color: var(--text); background: rgba(16, 20, 24, 0.78); border: 1px solid var(--line);
+  border-radius: var(--radius); cursor: pointer; transition: border-color 0.25s var(--ease);
+}
+.cover-edit:hover { border-color: var(--accent); }
+.frame .avatar-edit {
+  position: absolute; right: 6px; bottom: 6px; width: 24px; height: 24px; display: grid; place-items: center;
+  background: var(--accent); color: var(--bg); border: 2px solid var(--bg); border-radius: var(--radius); cursor: pointer; padding: 0;
+}
+.actions-list { display: flex; flex-direction: column; gap: 8px; }
+.opt.danger .opt-t { color: var(--danger); }
+
+/* Pemutar Spotify tersemat */
+.spotify-embed { display: block; width: 100%; height: 80px; margin-top: 8px; border: 0; border-radius: var(--radius); color-scheme: normal; }
+.song-list li { border-top: 1px solid var(--line); }
+.song-list li:first-child { border-top: 0; }
+.song-list li .song { border-top: 0; }
+.song-list li .spotify-embed { margin: 0 12px 10px; width: calc(100% - 24px); }
+.song .avatar { width: 40px; height: 40px; flex: none; }
+
+.music-src { flex: none; font-size: 11px; color: var(--muted); border: 1px solid var(--line); border-radius: var(--radius); padding: 0 6px; }
+
+/* Hasil musik: daftar bisa di-scroll bila banyak, menyusut bila sedikit */
+.song-list.scroll { max-height: 46dvh; overflow-y: auto; overscroll-behavior: contain; }
+.song-more { padding: 12px; text-align: center; font-size: 13px; color: var(--muted); }
+.row-actions.two .btn svg { margin-right: 6px; vertical-align: -3px; }
+
+/* Cerita: tahan untuk jeda */
+.story-stage { touch-action: none; }
+.story-bars, .story-head, .story-music { transition: opacity 0.2s var(--ease); }
+.story-view.held .story-bars, .story-view.held .story-head, .story-view.held .story-music { opacity: 0; }
+.story-music {
+  position: absolute; left: 12px; bottom: calc(14px + var(--safe-b)); max-width: 80%;
+  display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; font-size: 13px;
+  background: rgba(16, 20, 24, 0.7); color: #fff; border-radius: var(--radius); pointer-events: none;
+}
+.story-music span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

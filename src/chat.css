@@ -1,0 +1,82 @@
+/* ========== Daftar percakapan ========== */
+.chat-search { padding: 14px 16px 8px; }
+.chat-search .input { height: 44px; }
+.chat-results { margin: 0 16px 8px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.thread {
+  display: flex; align-items: center; gap: 12px; width: 100%; padding: 12px 16px; text-align: left;
+  font: inherit; color: var(--text); background: none; border: 0; border-bottom: 1px solid var(--line); cursor: pointer;
+  transition: background 0.2s var(--ease);
+}
+.chat-results .thread:last-child { border-bottom: 0; }
+.thread:hover { background: var(--surface-2); }
+.thread .avatar { flex: none; width: 48px; height: 48px; }
+.thread-body { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.thread-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.thread-top b { font-weight: 500; font-size: 15px; display: inline-flex; align-items: center; min-width: 0; }
+.thread-top time { flex: none; font-size: 12px; color: var(--muted); }
+.thread-bottom { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.thread-last { flex: 1; min-width: 0; font-size: 14px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.thread.unread .thread-last { color: var(--text); }
+.thread-count {
+  flex: none; min-width: 20px; height: 20px; padding: 0 6px; background: var(--accent); color: var(--bg);
+  border-radius: var(--radius); font-size: 12px; font-weight: 700; line-height: 20px; text-align: center;
+}
+.chat-empty { padding: 20px 16px; font-size: 14px; color: var(--muted); }
+
+/* ========== Layar chat ========== */
+.chat {
+  position: fixed; left: 0; right: 0; top: 0; height: 100dvh; z-index: 60;
+  display: flex; flex-direction: column; background: var(--bg); padding-top: var(--safe-t);
+  animation: pudar 0.25s var(--ease);
+}
+.chat-top {
+  flex: none; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px;
+  padding: 10px 16px; border-bottom: 1px solid var(--line); background: var(--bg);
+}
+.chat-who { display: flex; align-items: center; gap: 10px; min-width: 0; justify-self: center; background: none; border: 0; color: var(--text); font: inherit; cursor: pointer; }
+.chat-who .avatar { width: 36px; height: 36px; flex: none; }
+.chat-who b { font-weight: 500; display: inline-flex; align-items: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.chat-list {
+  flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain;
+  padding: 12px 14px; display: flex; flex-direction: column; gap: 2px;
+}
+.chat-note { padding: 18px 8px; text-align: center; font-size: 14px; color: var(--muted); }
+.chat-day { display: flex; justify-content: center; margin: 14px 0 8px; }
+.chat-day span { padding: 3px 12px; font-size: 12px; color: var(--muted); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.msg { display: flex; flex-direction: column; max-width: 82%; }
+.msg.first { margin-top: 8px; }
+.msg.me { align-self: flex-end; align-items: flex-end; }
+.msg.them { align-self: flex-start; align-items: flex-start; }
+.bubble {
+  padding: 8px 10px 6px; font-size: 15px; line-height: 1.4; word-break: break-word; white-space: pre-wrap;
+  border-radius: var(--radius); border: 1px solid var(--line);
+}
+.msg.me .bubble { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.msg.them .bubble { background: var(--surface); color: var(--text); }
+.b-time { display: inline-block; margin-left: 10px; font-size: 11px; opacity: 0.7; float: right; margin-top: 6px; }
+.b-status { margin-top: 2px; font-size: 11px; color: var(--muted); }
+.chat-err { padding: 6px 16px; font-size: 13px; color: var(--danger); }
+.chat-input {
+  flex: none; display: flex; align-items: flex-end; gap: 8px;
+  padding: 8px 12px calc(8px + var(--safe-b)); border-top: 1px solid var(--line); background: var(--bg);
+}
+.chat-input textarea {
+  flex: 1; min-width: 0; max-height: 120px; padding: 11px 12px; resize: none; font: inherit; font-size: 16px; line-height: 1.4;
+  color: var(--text); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); outline: none;
+  transition: border-color 0.25s var(--ease);
+}
+.chat-input textarea:focus { border-color: var(--accent); }
+.chat-input .btn { height: 44px; padding: 0 18px; }
+.ban-note { border-top: 1px solid var(--line); padding-bottom: calc(18px + var(--safe-b)); }
+
+/* ========== Layar akun dibanned ========== */
+.ban { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 24px; background: var(--bg); overflow-y: auto; }
+.ban-box {
+  width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: 16px; padding: 28px 24px;
+  background: var(--surface); border: 1px solid var(--line); border-left: 2px solid var(--danger); border-radius: var(--radius);
+}
+.ban-box h1 { font-size: 22px; font-weight: 500; letter-spacing: -0.02em; }
+.ban-until { font-size: 15px; color: var(--danger); }
+.ban-reason { padding: 12px 14px; background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); }
+.ban-reason span { font-size: 12px; color: var(--muted); }
+.ban-reason p { font-size: 15px; margin-top: 2px; word-break: break-word; }
