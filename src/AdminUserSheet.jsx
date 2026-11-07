@@ -97,7 +97,7 @@ export default function AdminUserSheet({ user, onClose, onChanged }) {
 
   async function hapusAkun() {
     if (konfirmasi !== u.username) return setErr("Ketik username dengan benar untuk konfirmasi.");
-    const ok = await jalankan(() => adminFn({ action: "delete_user", user_id: u.id }), "Akun dihapus.");
+    const ok = await jalankan(() => rpc("admin_delete_user", { p_user: u.id }), "Akun dihapus.");
     if (ok) onClose();
   }
 
@@ -236,7 +236,7 @@ export default function AdminUserSheet({ user, onClose, onChanged }) {
 
         {mode === "delete" && (
           <div className="adm-form">
-            <p className="error">Menghapus akun akan menghapus seluruh postingan, cerita, dan chat miliknya secara permanen.</p>
+            <p className="error">Menghapus akun akan menghapus seluruh postingan, cerita, dan chat miliknya secara permanen. File foto dan video di penyimpanan tidak ikut terhapus otomatis.</p>
             <div className="field">
               <label htmlFor="dl">Ketik <b>{u.username}</b> untuk konfirmasi</label>
               <input id="dl" className="input" value={konfirmasi} autoCapitalize="none" autoComplete="off"

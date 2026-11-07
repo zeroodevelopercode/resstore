@@ -35,14 +35,14 @@ export default function Register() {
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
-      options: { data: { name: name.trim(), username: uname } },
+      options: { data: { name: name.trim(), username: uname }, emailRedirectTo: window.location.origin },
     });
     setLoading(false);
     if (error) return setError("Pendaftaran gagal. Coba lagi.");
 
     // Jika konfirmasi email dimatikan, user langsung login
     if (data.session) return navigate("/home");
-    setInfo("Akun dibuat. Cek emailmu untuk konfirmasi, lalu masuk.");
+    setInfo("Akun dibuat. Buka emailmu dan ketuk tautan konfirmasi. Setelah itu kamu otomatis masuk ke resstore, atau masuk manual lewat halaman Masuk.");
   }
 
   return (
